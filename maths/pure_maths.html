@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Pure Maths</title>
+        <link rel="stylesheet" href="../styles.css">
+    </head>
+    <body>
+        <h1>Pure</h1>
+        <p>
+            This page contains notes from the Pure Year 1 and Pure Year 2 textbooks.
+        </p>
+        <hr>
+        <h2>Proofs</h2>
+        <p>We need to know 4 methods of proof.</p>
+        <h3>Proof by Deduction</h3>
+        <p>
+            Literally just using clear logical steps to conclude a result. 
+            This could be using soley algebra to show LHS = RHS or 
+            incorporating logical statements like "ODD * EVEN = EVEN".
+        </p>
+        <h3>Proof by Exhaustion</h3>
+        <p>
+            Breaking a proof into multiple cases and proving each case separately. 
+            It can be as simple as considering odd numbers then even numbers, 
+            or considering numbers that are a multiple of 3, 1 more than a multiple of 3,
+            or 2 more than a multiple of 3.
+        </p>
+        <h3>Disproof by Counterexample</h3>
+        <p>
+            Any mathematical statement can be proven false by one counterexample. 
+            A starting example is to disprove the statement "All prime numbers are odd". 
+            The counterexample here is 2 because 2 is a prime number that is even.
+        </p>
+        <h3>Proof by Contradiction</h3>
+        <p>
+            This proof is more structured than the others:
+        </p>
+        <ol>
+            <li>Assume that the opposite of the statement is true</li>
+            <li>'Do some maths'</li>
+            <li>Find a result that is impossible</li>
+            <li>Write a conclusion</li>
+        </ol>
+        <p>
+            Prove by contradiction the statement "a + b >= 2√(ab) for a >= 0, b >= 0" <br>
+            Assume "a + b < 2√(ab)" <br>
+            Then (a + b)^2 < (2√(ab))^2 <br>
+            a^2 + 2ab + b^2 < 4ab <br>
+            a^2 - 2ab + b^2 < 0 <br>
+            (a - b)^2 < 0 <br>
+            But x^2 >= 0 for all x ∈ R <br>
+            Hence we have arrived at a contradiction <br>
+            So a + b >= 2√(ab) for a >= 0, b >= 0<br>
+        </p>
+    </body>
+</html>
