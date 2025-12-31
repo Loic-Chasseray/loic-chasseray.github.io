@@ -61,7 +61,7 @@
             intuition about where they come from.
         </p>
         <h3>Compound-Angle Formulae</h3>
-        <h4>Sine</h4>
+        <h4>Sine (positive)</h4>
         <p>
             Starting with a geometric construction we can prove that <br>
             sin(α + β) = sin(α)cos(β) + cos(α)sin(β)
@@ -99,7 +99,7 @@
             Now that everything has been labelled, it is evident that AG = ED = EF + FD <br>
             Therefore, sin(α + β) = sin(α)cos(β) + cos(α)sin(β)
         </p>
-        <h4>Cosine</h4>
+        <h4>Cosine (positive)</h4>
         <p>
             Starting with a geometric construction we can prove that <br>
             cos(α + β) = cos(α)cos(β) - sin(α)sin(β)
@@ -137,7 +137,62 @@
             Now that everything has been labelled, it is evident that EG = AD = AB - DB <br>
             Therefore, cos(α + β) = cos(α)cos(β) - sin(α)sin(β)
         </p>
-        <h4>Tangent</h4>
+        <h4>Tangent (positive)</h4>
+        <p>
+            Using the positive sine and cosine results we can prove that <br>
+            tan(α + β) = (tan(α) + tan(β)) / (1 - tan(α)tan(β))
+        </p>
+        <p>
+            Since tan(θ) = sin(θ) / cos(θ) <br>
+            tan(α + β) = sin(α + β) / cos(α + β) <br>
+            tan(α + β) = (sin(α)cos(β) + cos(α)sin(β)) / (cos(α)cos(β) - sin(α)sin(β))
+            Dividing all terms by cos(α)cos(β) gives
+            tan(α + β) = (tan(α) + tan(β)) / (1 - tan(α)tan(β))
+        </p>
+        <h4>Sine (negative)</h4>
+        <p>
+            We can use the positive result to derive the negative result <br>
+            We also need the following results:
+        </p>
+        <ul>
+            <li>cos(-θ) = cos(θ)</li>
+            <li>sin(-θ) = -sin(θ)</li>
+        </ul>
+        <p>
+            We derived that sin(α + β) = sin(α)cos(β) + cos(α)sin(β)
+            Replacing β with -β gives
+            sin(α + (-β)) = sin(α)cos((-β)) + cos(α)sin((-β))
+            sin(α - β) = sin(α)cos(-β) + cos(α)sin(-β)
+            sin(α - β) = sin(α)cos(β) - cos(α)sin(β)
+        </p>
+        <h4>Cosine (negative)</h4>
+        <p>
+            We can use the positive result to derive the negative result <br>
+            We also need the following results:
+        </p>
+        <ul>
+            <li>cos(-θ) = cos(θ)</li>
+            <li>sin(-θ) = -sin(θ)</li>
+        </ul>
+        <p>
+            We derived that cos(α + β) = cos(α)cos(β) - sin(α)sin(β)
+            Replacing β with -β gives
+            cos(α + (-β)) = cos(α)cos((-β)) - sin(α)sin((-β))
+            cos(α - β) = cos(α)cos(-β) - sin(α)sin(-β)
+            cos(α - β) = cos(α)cos(β) + sin(α)sin(β)
+        </p>
+        <h4>Tangent (negative)</h4>
+        <p>
+            Using the negative sine and cosine results we can prove that <br>
+            tan(α - β) = (tan(α) - tan(β)) / (1 + tan(α)tan(β))
+        </p>
+        <p>
+            Since tan(θ) = sin(θ) / cos(θ) <br>
+            tan(α - β) = sin(α - β) / cos(α - β) <br>
+            tan(α - β) = (sin(α)cos(β) - cos(α)sin(β)) / (cos(α)cos(β) + sin(α)sin(β))
+            Dividing all terms by cos(α)cos(β) gives
+            tan(α - β) = (tan(α) - tan(β)) / (1 + tan(α)tan(β))
+        </p>
         <h3>Double Angle Formulae</h3>
     </body>
 </html>
