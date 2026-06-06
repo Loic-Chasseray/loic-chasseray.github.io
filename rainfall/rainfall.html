@@ -47,13 +47,13 @@
             {
                 const data = await fetchData()
                 const timestamp = data.map(item => item.timestamp)
-                const rainfall = data.map(item => item.timestamp)
+                const rainfall = data.map(item => item.rainfall)
                 const cutoff = Date.now() - 24 * 60 * 60 * 1000
                 const timestampPlot = []
                 const rainfallPlot = []
                 for (let i = 0; i < timestamp.length; i++)
                 {
-                    if (new Date(timestamps[i]).getTime() >= cutoff)
+                    if (new Date(timestamp[i]).getTime() >= cutoff)
                     {
                         timestampPlot.push(formatTime(timestamp[i]))
                         rainfallPlot.push(parseFloat(rainfall[i]))
