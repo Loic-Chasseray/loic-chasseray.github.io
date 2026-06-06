@@ -4,43 +4,83 @@
         <meta charset="UTF-8">
         <title>Demo</title>
         <link rel="stylesheet" href="styles.css">
-        <!-- Load Plotly -->
-        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-        <!-- Load PapaParse -->
-        <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
     <body>
         <h1>Rainfall</h1>
         <p>This page displays data from my repo "Rainfall Data Collector".</p>
         <hr>
         <!-- consider putting this css into styles.css -->
-        <div id="chart" style="width: 100%; max-width: 100%; height: 60vh;"></div>
+        <canvas id="chart"></canvas>
         <!-- consider putting this javascript into a seperate file -->
         <script>
-            const url = "https://raw.githubusercontent.com/Loic-Chasseray/Rainfall-Data-Collector/refs/heads/main/master.csv"
-            fetch(url)
-                .then(response => response.text())
-                .then(csvText => 
+            const url = "https://raw.githubusercontent.com/Loic-Chasseray/Rainfall-Data-Collector/refs/heads/main/master.csv";
+            
+            function parseCSV(text)
+            {
+                const lines = text.trim().split("\n")
+                const rows = []
+                for (const line of lines.slice(1)) // slice(1) skips the header of the csv
+                {
+                    if (!line.includes(",")) continue // skip lines with no comma
+                    const [timestamp, rainfall] = line.split(",")
+                    rows.push({ timestamp: timestamp.trim(), rainfall: rainfall.trim() })
+                }
+                return rows
+            }
+            
+            async function fetchData()
+            {
+                const response = await fetch(url)
+                const text = await response.text()
+                return parseCSV(text)
+            }
+
+            function formatTime(timestamp)
+            {
+                const date = new Date(timestamp)
+                return date.getHours().toString().padStart(2, "0") + ":" +
+                    date.getMinutes().toString().padStart(2, "0");
+            }
+            
+            async function main()
+            {
+                const data = await fetchData()
+                const timestamp = data.map(item => item.timestamp)
+                const rainfall = data.map(item => item.timestamp)
+                const cutoff = Date.now() - 24 * 60 * 60 * 1000
+                const timestampPlot = []
+                const rainfallPlot = []
+                for (let i = 0; i < timestamp.length; i++)
+                {
+                    if (new Date(timestamps[i]).getTime() >= cutoff)
                     {
-                        const parsed = Papa.parse(csvText, { header: true }).data;
-                        const timestamp = parsed.map(row => row["Timestamp (UTC)"]);
-                        const rainfall = parsed.map(row => row["Rainfall (mm)"]);
-                        Plotly.newPlot
-                            (
-                                "chart",
-                                [{
-                                    x: timestamp,
-                                    y: rainfall,
-                                    type: "bar"
-                                }],
-                                {
-                                    title: "Rainfall at Hogsmill Gauge"
-                                },
-                                {
-                                    responsive: true
-                                }
-                            );
-                    });
+                        timestampPlot.push(formatTime(timestamp[i]))
+                        rainfallPlot.push(parseFloat(rainfall[i]))
+                    }
+                }
+                new Chart
+                    (
+                        document.getElementById("chart").getContext("2d"),
+                        {
+                            type: "bar",
+                            data: 
+                            {
+                                labels: timestampPlot,
+                                datasets:
+                                    [{
+                                        data: rainfallPlot
+                                    }]
+                            },
+                            options:
+                            {
+                                responsive: true
+                            }
+                        }
+                    )
+            }
+
+            main()
         </script>
     </body>
 </html>
